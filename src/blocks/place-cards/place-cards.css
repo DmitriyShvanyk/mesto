@@ -1,0 +1,9 @@
+@import url(../place-cards/__info/places-cards__info.css);
+@import url(../place-cards/__count/places-cards__count.css);
+
+.place-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 282px);
+  grid-gap: 18px 18px;
+  justify-content: center;
+}

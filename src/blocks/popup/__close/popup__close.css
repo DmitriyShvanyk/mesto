@@ -1,0 +1,39 @@
+.popup__close {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: -36px;
+  right: -36px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  transition: transform .3s ease;
+  outline: none;
+  text-indent: -9999px;
+}
+
+.popup__close::before,
+.popup__close::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 4px;
+  background-color: #E8E8E8;
+  transform: translate(-50%, -50%) rotate(45deg);
+  transition: background-color .3s ease;
+}
+
+.popup__close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.popup__close:hover::before,
+.popup__close:hover::after {
+  background-color: #fff;
+}
+
+.popup__close:hover{
+  transform: scale(1.05);
+}

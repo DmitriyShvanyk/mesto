@@ -1,0 +1,12 @@
+.popup__item {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width:767px) {
+
+  .popup__item {
+    margin-bottom: 10px;
+  }
+
+}

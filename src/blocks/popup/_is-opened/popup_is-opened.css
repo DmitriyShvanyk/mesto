@@ -1,0 +1,14 @@
+.popup.popup_is-opened {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.popup__content{
+  transform: translateY(100vh);
+  transition: transform .5s ease;
+}
+
+.popup.popup_is-opened .popup__content{
+  transform: translateY(0);
+}

@@ -1,0 +1,19 @@
+.user-info__edit {
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1.25;
+  color: #fff;
+  background-color: transparent;
+  border: 1px solid #fff;
+  padding: .5px 7.08px;
+  text-align: center;
+  margin-top: 19px;
+  transition: color .3s ease, background-color .3s ease;
+}
+
+.user-info__edit:hover,
+.user-info__edit:focus,
+.user-info__edit:active{
+  color: #000;
+  background-color: #fff;  
+}

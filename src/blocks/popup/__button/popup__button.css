@@ -1,0 +1,24 @@
+.popup__button {
+  width: 100%;
+  height: 50px;
+  border: 1px solid #000;
+  background-color: #000;
+  margin-top: 48px;
+  color: #fff;
+  font-size: 36px;
+}
+
+.popup__button[disabled]{
+  cursor: not-allowed;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, .2);
+  color: rgba(0, 0, 0, .2);
+}
+
+@media screen and (max-width:767px){
+
+  .popup__button {
+    margin-top: 20px;
+  }
+
+}

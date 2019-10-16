@@ -1,0 +1,17 @@
+.popup__caption {
+  color: #fff;
+  text-align: center;
+  font-size: 3vh;
+  margin-top: 1vh;
+  animation: showCaption .3s ease-in-out forwards;
+}
+
+@keyframes showCaption {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}

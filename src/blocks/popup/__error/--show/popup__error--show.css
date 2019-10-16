@@ -1,0 +1,13 @@
+.popup__error--show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+}
+
+@media screen and (max-width:767px) {
+
+  .popup__error--show {
+    transform: translateY(0) translateX(0);
+  }
+
+}
