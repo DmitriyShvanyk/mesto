@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mesto</title>
+  <link rel="stylesheet" href="./css/main.3284aacc61699b4abd92.css?ff27c3afcc5e6e2c53cf">
+</head>
+
+<body>
+  <div class="root">
+    
+    <!--preloader.begin-->
+    <div class="preloader">
+      <div class="preloader__icon"></div>
+    </div>
+    <!--preloader.end-->
+
+    <header class="header root__section">
+      <img class="logo" src=".././images/logo.svg" alt="mesto logo">
+    </header>
+    <div class="profile root__section">
+      <div class="user-info">
+        <div class="user-info__photo"></div>
+        <div class="user-info__data">
+          <h1 class="user-info__name">DS</h1>
+          <p class="user-info__job">User text info</p>
+          <button class="user-info__edit js-btn">Edit</button>
+        </div>
+        <button class="button user-info__button js-btn">+</button>
+      </div>
+    </div>
+    <div class="places-list root__section">
+
+      <h2 class="no-cards no-cards_hidden">Нет добавленных карточек</h2>
+
+      <div class="places-cards__info">
+        <div class="places-cards__count">Количество карточек - 0</div>
+        <div class="places-cards__count places-cards__count--my">Количество моих карточек - 0</div>
+      </div>
+
+      <div class="place-cards"></div>
+
+    </div>
+
+    <!--popup update avatar.begin-->
+    <div class="popup popup--update-avatar">
+      <div class="popup__overlay"></div>
+      <div class="popup__content">
+        <button class="popup__close">Close</button>
+        <h3 class="popup__title">Обновить аватар</h3>
+        <form class="popup__form popup__form--update-avatar" name="update-avatar">          
+          <div class="popup__item">
+            <input type="url" name="avatar" class="popup__input popup__input_type_link-avatar"
+              placeholder="Ссылка на картинку"
+              pattern="^(?:(?:https?|HTTPS?|ftp|FTP):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-zA-Z\u00a1-\uffff0-9]-*)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]-*)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$"
+              required>
+          </div>
+          <button type="submit" class="button popup__button popup__button--update-avatar">Обновить</button>
+        </form>
+      </div>
+    </div>
+    <!--popup update avatar.end-->
+
+    <!--popup add place.begin-->
+    <div class="popup popup--add-place">
+      <div class="popup__overlay"></div>
+      <div class="popup__content">
+        <button class="popup__close">Close</button>
+        <h3 class="popup__title">Новое место</h3>
+        <form class="popup__form popup__form--add-place" name="new">
+          <div class="popup__item">
+            <input type="text" minlength="2" maxlength="30" name="name" class="popup__input popup__input_type_name"
+              placeholder="Название" required>
+          </div>
+          <div class="popup__item">
+            <input type="url" name="link" class="popup__input popup__input_type_link-url"
+              placeholder="Ссылка на картинку"
+              pattern="^(?:(?:https?|HTTPS?|ftp|FTP):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-zA-Z\u00a1-\uffff0-9]-*)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]-*)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$"
+              required>
+          </div>
+          <button type="submit" class="button popup__button popup__button--add-place">+</button>
+        </form>
+      </div>
+    </div>
+    <!--popup add place.end-->
+
+    <!--popup edit.begin-->
+    <div class="popup popup--edit">
+      <div class="popup__overlay"></div>
+      <div class="popup__content">
+        <button class="popup__close">Close</button>
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <form class="popup__form popup__form--edit" name="edit">
+          <div class="popup__item">
+            <input type="text" minlength="2" maxlength="30" name="userName" class="popup__input popup__input_user-name"
+              placeholder="Имя" required>
+          </div>
+          <div class="popup__item">
+            <input type="text" minlength="2" maxlength="30" name="userJob" class="popup__input popup__input_user-job"
+              placeholder="О себе" required>
+          </div>
+          <button type="submit" class="button popup__button popup__button--edit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+    <!--popup edit.end-->
+
+  </div>
+
+  <!--scripts.begin-->
+  <script src="./js/main.d1eea3a0096e2f1a24a2.js?ff27c3afcc5e6e2c53cf"></script>
+  <!--scripts.end-->
+
+</body>
+
+</html>
