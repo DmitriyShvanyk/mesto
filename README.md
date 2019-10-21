@@ -1,5 +1,3 @@
-![alt text](https://dmitriyshvanyk.github.io/mesto/images/logo.svg)
-
 # Mesto 
 
 #### Version 1.0.0
