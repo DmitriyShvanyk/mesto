@@ -46,7 +46,8 @@ api.getInitialProfile()
     userJob.textContent = result.about;
     userPhoto.style.backgroundImage = `url(${result.avatar})`;
   }).catch(function (err) {
-    console.log(err);
+    //console.log(err);
+    return Promise.reject(`Ошибка: ${err.status}`);
   });
 
 api.getInitialCards()
@@ -59,7 +60,6 @@ api.getInitialCards()
       cardList.addCard(result[i].name, result[i].link, result[i]._id, result[i].likes.length, result[i].owner.name);
 
       for (let j = 0; j < result[i].likes.length; j++) {
-
         if (result[i].likes[j].name === userName.textContent) {
           const likeIcons = document.querySelectorAll('.place-card__like-icon');
           for (let k = 0; k < likeIcons.length; k++) {
@@ -78,9 +78,11 @@ api.getInitialCards()
     const cardsMy = document.querySelectorAll('[data-card=my]');
     cardCounts.textContent = `Количество карточек - ${result.length}`;
     cardCountsMy.textContent = `Количество моих карточек - ${cardsMy.length}`;
+    
   })
   .catch(function (err) {
-    console.log(err);
+    //console.log(err);
+    return Promise.reject(`Ошибка: ${err.status}`);
   });
 
 

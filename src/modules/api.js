@@ -9,7 +9,6 @@ class Api {
   }
 
   getInitialProfile() {
-
     return fetch(`${this.url}/users/me`, {
       headers: this.headers
     })
@@ -17,8 +16,8 @@ class Api {
         if (response.ok) {
           return response.json();
         }
-
-        return Promise.reject(`Ошибка: ${res.status}`);
+       
+        //return Promise.reject(`Ошибка: ${res.status}`);
       });
 
   }
@@ -31,8 +30,7 @@ class Api {
         if (response.ok) {
           return response.json();
         }
-
-        return Promise.reject(`Ошибка: ${res.status}`);
+        //return Promise.reject(`Ошибка: ${res.status}`);
       });
   }
 

@@ -5,7 +5,6 @@ import { Card } from "./card.js";
 // Класс для хранения и отрисовки карточек
 class CardList {
   constructor(container) {
-
     this.container = container;
     this.cards = [];
     this.renderNoCards();
@@ -28,6 +27,7 @@ class CardList {
     else {
       noCards.classList.add('no-cards_hidden');
     }
+
   }
 
 }

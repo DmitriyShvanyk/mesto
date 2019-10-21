@@ -1,6 +1,5 @@
 export { Card };
 
-
 import { userName, popupImage, api } from "./../index.js";
 
 
@@ -8,7 +7,6 @@ import { userName, popupImage, api } from "./../index.js";
 class Card {
 
   constructor(nameCard, urlCard, idCard, likeCard, authorCard) {
-
     this.link = urlCard;
     this.cardElement = this.createCard(nameCard, urlCard, idCard, likeCard, authorCard);
     this.removeCard = this.removeCard.bind(this);
@@ -87,7 +85,7 @@ class Card {
       api.deleteCard(this.cardElement.dataset.id)
         .then(function (result) {
 
-          console.log(result); // message: "Пост удалён"  
+          //console.log(result); // message: "Пост удалён"  
           event.target.closest('.place-cards').removeChild(event.target.closest('.place-card'));
 
         }).catch(function (err) {

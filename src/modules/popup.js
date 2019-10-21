@@ -11,7 +11,7 @@ class Popup {
     this.resetFieldsWhenClosePopup = this.resetFieldsWhenClosePopup.bind(this);
 
     this.btnElement.addEventListener('click', this.openPopup);
-
+    
     this.popupElement.querySelector('.popup__close').addEventListener('click', this.closePopup);
     this.popupElement.querySelector('.popup__overlay').addEventListener('click', this.closePopup);
   }
@@ -31,7 +31,7 @@ class Popup {
     const target = event.target;
     let message = target.closest('.popup').querySelectorAll('.popup__error--show');
     for (let i = 0; i < message.length; i++) {
-      message[i].innerHTML = '';
+      message[i].textContent = '';
       message[i].classList.remove('popup__error--show');
     }
   }

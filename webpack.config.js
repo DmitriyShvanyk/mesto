@@ -8,7 +8,7 @@ const WebpackMd5Hash = require('webpack-md5-hash');
 // плагин для чтения css внутри js-кода
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
@@ -35,19 +35,7 @@ module.exports = {
           'css-loader',
           'postcss-loader'
         ]
-      },
-      /*{
-        test: /\.(png|jpg|gif|ico|svg)$/,
-        use: [          
-          'file-loader?name=./images/[name].[ext]', // указали папку, куда складывать изображения
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              publicPath: "../",
-            }
-          },
-        ],             
-      },*/
+      },      
       {
         test: /\.(png|jpg|gif|ico|svg)$/,
         use: {
@@ -97,6 +85,16 @@ module.exports = {
         preset: ['default'],
       },
       canPrint: true
+    }),
+    new UglifyJsPlugin({
+      uglifyOptions: {
+        compress: {
+          global_defs: {
+            "@alert": "console.log",
+          },
+          drop_console: true
+        }
+      }
     })
   ]
 };
