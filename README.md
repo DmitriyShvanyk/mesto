@@ -1,4 +1,4 @@
-![alt-текст](https://dmitriyshvanyk.github.io/mesto/images/logo.svg "Mesto");
+https://dmitriyshvanyk.github.io/mesto/images/logo.svg
 
 # Mesto 
 
