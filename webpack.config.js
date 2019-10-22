@@ -1,15 +1,15 @@
-const webpack = require('webpack');
+const webpack = require('webpack')
 
 // плагин, который превращает относительный путь в абсолютный
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WebpackMd5Hash = require('webpack-md5-hash');
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const WebpackMd5Hash = require('webpack-md5-hash')
 
 // плагин для чтения css внутри js-кода
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const isDev = process.env.NODE_ENV === 'development';
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const isDev = process.env.NODE_ENV === 'development'
 
 module.exports = {
   entry: {
@@ -25,48 +25,47 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: 'babel-loader'
         }
       },
       {
         test: /\.css$/,
         use: [
-          (isDev ? 'style-loader' : MiniCssExtractPlugin.loader),
+          isDev ? 'style-loader' : {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../'
+            }
+          },
           'css-loader',
           'postcss-loader'
         ]
-      },      
+      },
       {
         test: /\.(png|jpg|gif|ico|svg)$/,
         use: {
-          loader: "file-loader",
+          loader: 'file-loader',
           options: {
-            name: "./images/[name].[ext]",            
-            outputPath: '',
-            publicPath: "../",
-          },
-        },
+            name: './images/[name].[ext]'
+          }
+        }
       },
 
       {
         test: /\.(ttf|eot|woff|woff2)$/,
         use: {
-          loader: "file-loader",
+          loader: 'file-loader',
           options: {
-            name: "./vendor/fonts/[name].[ext]",
-            publicPath: "../",
-          },
-        },
-      },
+            name: './vendor/fonts/[name].[ext]'
+          }
+        }
+      }
 
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: './css/main.[contenthash].css',
-      options: {
-        publicPath: "../",
-      },
+      filename: './css/main.[contenthash].css'
     }),
     new HtmlWebpackPlugin({
       inject: false,
@@ -82,7 +81,7 @@ module.exports = {
       assetNameRegExp: /\.css$/g,
       cssProcessor: require('cssnano'),
       cssProcessorPluginOptions: {
-        preset: ['default'],
+        preset: ['default']
       },
       canPrint: true
     }),
@@ -90,7 +89,7 @@ module.exports = {
       uglifyOptions: {
         compress: {
           global_defs: {
-            "@alert": "console.log",
+            '@alert': 'console.log'
           },
           drop_console: true
         }
@@ -98,7 +97,3 @@ module.exports = {
     })
   ]
 };
-
-
-
-
