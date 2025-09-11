@@ -3,7 +3,7 @@ export { Card };
 import { userName, popupImage, api } from "./../index.js";
 
 
-// Класс, создающий карточку
+// Class Card
 class Card {
 
   constructor(nameCard, urlCard, idCard, likeCard, authorCard) {
@@ -18,8 +18,9 @@ class Card {
     this.cardElement.querySelector('.place-card__image').addEventListener('click', this.createCardPopupImage);
   }
 
-  // метод создания карточки
+  // Create Card
   createCard(nameCardValue, urlBgValue, idCard, likeCard, authorCard) {
+
     const placeCardFragment = document.createDocumentFragment();
     let placeCard = document.createElement('div');
     let placeCardPicure = document.createElement('div');
@@ -47,8 +48,8 @@ class Card {
     function errorImage() {
       placeCardImage.src = 'https://cdn.browshot.com/static/images/not-found.png';
     }
-    placeCardImage.addEventListener('error', errorImage);
 
+    placeCardImage.addEventListener('error', errorImage);
 
     placeCardDelete.classList.add('place-card__delete-icon');
     placeCardDescription.classList.add('place-card__description');
@@ -73,19 +74,18 @@ class Card {
     placeCardFragment.appendChild(placeCard);
 
     return placeCard;
-
   }
 
-  // метод удаления карточки
+  // Remove Card
   removeCard(event) {
 
-    const removeSure = confirm('Вы уверенны?');
+    const removeSure = confirm('Are you sure?');
 
     if (removeSure) {
       api.deleteCard(this.cardElement.dataset.id)
         .then(function (result) {
 
-          //console.log(result); // message: "Пост удалён"  
+          //console.log(result); // message: "Post deleted"  
           event.target.closest('.place-cards').removeChild(event.target.closest('.place-card'));
 
         }).catch(function (err) {
@@ -108,7 +108,7 @@ class Card {
     }
   }
 
-  // метод для лайков
+  // Add Like
   addLike(event) {
 
     const target = event.target;
@@ -136,7 +136,7 @@ class Card {
 
   }
 
-  // метод создания всплывающего окна для изображения
+  // Create Card Popup Image
   createCardPopupImage() {
     popupImage.createPopupImage(this.link);
   }

@@ -1,15 +1,12 @@
-const webpack = require('webpack')
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const WebpackMd5Hash = require('webpack-md5-hash');
 
-// плагин, который превращает относительный путь в абсолютный
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const WebpackMd5Hash = require('webpack-md5-hash')
-
-// плагин для чтения css внутри js-кода
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const isDev = process.env.NODE_ENV === 'development'
+const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
   entry: {
@@ -17,50 +14,42 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: './js/[name].[chunkhash].js'
+    filename: './js/[name].[chunkhash].js',
+    clean: true // очистка dist перед сборкой
   },
   module: {
     rules: [
+      // JS
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
-        }
+        use: 'babel-loader'
       },
+      // CSS
       {
         test: /\.css$/,
         use: [
-          isDev ? 'style-loader' : {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: '../'
-            }
-          },
+          isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
           'postcss-loader'
         ]
       },
+      // Изображения (png, jpg, gif, ico, svg)
       {
-        test: /\.(png|jpg|gif|ico|svg)$/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: './images/[name].[ext]'
-          }
+        test: /\.(png|jpe?g|gif|ico|svg)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name][ext]'
         }
       },
-
+      // Шрифты
       {
         test: /\.(ttf|eot|woff|woff2)$/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: './vendor/fonts/[name].[ext]'
-          }
+        type: 'asset/resource',
+        generator: {
+          filename: 'vendor/fonts/[name][ext]'
         }
       }
-
     ]
   },
   plugins: [
@@ -75,7 +64,7 @@ module.exports = {
     }),
     new WebpackMd5Hash(),
     new webpack.DefinePlugin({
-      'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV)
     }),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.css$/g,
@@ -95,5 +84,13 @@ module.exports = {
         }
       }
     })
-  ]
+  ],
+  devtool: isDev ? 'source-map' : false,
+  devServer: {
+    static: path.resolve(__dirname, 'dist'),
+    compress: true,
+    port: 8080,
+    open: true,
+    hot: true
+  }
 };

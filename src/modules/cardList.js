@@ -2,7 +2,7 @@ export { CardList };
 
 import { Card } from "./card.js";
 
-// Класс для хранения и отрисовки карточек
+// Class Card List
 class CardList {
   constructor(container) {
     this.container = container;
@@ -10,7 +10,7 @@ class CardList {
     this.renderNoCards();
   }
 
-  // метод добавления одной карточки
+  //  Add Card
   addCard(nameCard, urlCard, idCard, likeCard, idLike, authorCard) {
     const { cardElement } = new Card(nameCard, urlCard, idCard, likeCard, idLike, authorCard);
     this.cards.push(cardElement);
@@ -18,7 +18,7 @@ class CardList {
     this.renderNoCards();
   }
 
-  // метод, если нет карточек
+  // No Cards
   renderNoCards() {
     const noCards = document.querySelector('.no-cards');
     if (this.cards.length === 0) {

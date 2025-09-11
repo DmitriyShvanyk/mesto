@@ -1,6 +1,6 @@
 export { LoadData };
 
-// класс Предзагрузка данных (UX)
+// Class Load
 class LoadData {
   contructor() {
     this.load(ms);

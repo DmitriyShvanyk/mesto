@@ -1,7 +1,7 @@
 export { Api };
 
 
-// класс API
+// Class API
 class Api {
   constructor(url, headers) {
     this.url = url;
@@ -17,7 +17,7 @@ class Api {
           return response.json();
         }
        
-        //return Promise.reject(`Ошибка: ${res.status}`);
+        //return Promise.reject(`Error: ${res.status}`);
       });
 
   }
@@ -30,12 +30,12 @@ class Api {
         if (response.ok) {
           return response.json();
         }
-        //return Promise.reject(`Ошибка: ${res.status}`);
+        //return Promise.reject(`Error: ${res.status}`);
       });
   }
 
 
-  editProfile(nameUser = 'Dmitriy Shvanyk', aboutUser = 'Погромист') {
+  editProfile(nameUser = 'Dmitriy Shvanyk', aboutUser = 'Pogromist') {
 
     return fetch(`${this.url}/users/me`, {
       method: 'PATCH',
@@ -69,7 +69,7 @@ class Api {
           return response.json();
         }
 
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return Promise.reject(`Error: ${res.status}`);
       });
   }
 
@@ -86,7 +86,7 @@ class Api {
           return response.json();
         }
 
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return Promise.reject(`Error: ${res.status}`);
       });
   }
 
@@ -104,7 +104,7 @@ class Api {
           return response.json();
         }
 
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return Promise.reject(`Error: ${res.status}`);
       });
   }
 
@@ -121,7 +121,7 @@ class Api {
           return response.json();
         }
 
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return Promise.reject(`Error: ${res.status}`);
       });
   }
 
@@ -138,7 +138,7 @@ class Api {
           return response.json();
         }
 
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return Promise.reject(`Error: ${res.status}`);
       });
   }
 

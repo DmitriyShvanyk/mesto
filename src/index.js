@@ -10,7 +10,7 @@ import { Popup } from "./modules/popup.js";
 import { addAttributeNovalidate, hasError, showError, checkField } from "./modules/validation.js"
 
 
-// Переменные  
+// Variables
 const root = document.querySelector('.root');
 const popupEdit = root.querySelector('.popup--edit');
 const btnUserEdit = root.querySelector('.user-info__edit');
@@ -72,7 +72,7 @@ api.getInitialCards()
 
     }
 
-    // Кол-во добавленных карточек
+    // Cards
     const cardCounts = document.querySelector('.places-cards__count');
     const cardCountsMy = document.querySelector('.places-cards__count--my');
     const cardsMy = document.querySelectorAll('[data-card=my]');
@@ -90,10 +90,10 @@ const cardList = new CardList(document.querySelector('.place-cards'));
 const popupImage = new PopupImage(document.querySelector('.popup__image'));
 
 
-// Класс наследник EditPopup
+// Class EditPopup
 class EditPopup extends Popup {
 
-  // метод для открытия окна Edit
+  // open popup
   openPopup(event) {
     super.openPopup(event);
     event.target.closest('.root').querySelector('.popup__input_user-name').value = userName.textContent;
@@ -101,7 +101,7 @@ class EditPopup extends Popup {
     formEdit.lastElementChild.removeAttribute('disabled');
   }
 
-  // метод для закрытия окна Edit
+  // close popup
   closePopupEdit(event) {
     const target = event.target;
     if (target.matches('.popup--edit .popup__close') || target.matches('.popup--edit .popup__overlay')) {
@@ -114,7 +114,7 @@ class EditPopup extends Popup {
 }
 
 
-// Класс наследник AddPlacePopup
+// Class AddPlacePopup
 class AddPlacePopup extends Popup {
   closePopup(event) {
     super.closePopup(event);
@@ -128,7 +128,7 @@ class AddPlacePopup extends Popup {
 }
 
 
-// Класс наследник UpdateAvatarPopup
+// Class UpdateAvatarPopup
 class UpdateAvatarPopup extends Popup {
   closePopup(event) {
     super.closePopup(event);
@@ -147,7 +147,7 @@ const updateAvatarPopup = new UpdateAvatarPopup(popupUpdateAvatar, userPhoto);
 
 
 
-// Функция валидации формы Добавить место
+// Validation Form Add Place
 function validationFormAddPlace(event) {
   event.preventDefault();
 
@@ -201,7 +201,7 @@ function validationFormAddPlace(event) {
         console.log(err);
 
       }).finally(function () {
-        target.querySelector('.popup__button--add-place').textContent = 'Загрузка ...';
+        target.querySelector('.popup__button--add-place').textContent = 'Loading ...';
       });
 
 
@@ -209,7 +209,7 @@ function validationFormAddPlace(event) {
 
 }
 
-// Функция валидации формы Edit
+// Validation Form Edit
 function validationFormEdit(event) {
 
   const target = event.target;
@@ -242,7 +242,7 @@ function validationFormEdit(event) {
 
     event.preventDefault();
 
-    target.querySelector('.popup__button--edit').textContent = 'Сохранить';
+    target.querySelector('.popup__button--edit').textContent = 'Save';
 
     api.editProfile(target.elements.userName.value, target.elements.userJob.value)
       .then(function (result) {
@@ -251,7 +251,7 @@ function validationFormEdit(event) {
 
         setTimeout(function () {
 
-          target.querySelector('.popup__button--edit').textContent = 'Сохранить';
+          target.querySelector('.popup__button--edit').textContent = 'Save';
 
           if (target.classList.contains('popup__form')) {
             editPopup.closePopup(event);
@@ -264,7 +264,7 @@ function validationFormEdit(event) {
 
       }).finally(function () {
 
-        target.querySelector('.popup__button--edit').textContent = 'Загрузка ...';
+        target.querySelector('.popup__button--edit').textContent = 'Loading ...';
 
       });
 
@@ -272,7 +272,7 @@ function validationFormEdit(event) {
 
 }
 
-// Функция валидации формы Добавить место
+// Validation Form Update Avatar
 function validationFormUpdateAvatar(event) {
   event.preventDefault();
 
@@ -309,7 +309,7 @@ function validationFormUpdateAvatar(event) {
 
         setTimeout(function () {
 
-          target.querySelector('.popup__button--update-avatar').textContent = 'Обновить';
+          target.querySelector('.popup__button--update-avatar').textContent = 'Update';
 
           if (target.classList.contains('popup__form')) {
             updateAvatarPopup.closePopup(event);
@@ -325,7 +325,7 @@ function validationFormUpdateAvatar(event) {
 
       }).finally(function () {
 
-        target.querySelector('.popup__button--update-avatar').textContent = 'Загрузка ...';
+        target.querySelector('.popup__button--update-avatar').textContent = 'Loading ...';
 
       });
 
@@ -333,13 +333,11 @@ function validationFormUpdateAvatar(event) {
 
 }
 
-/* Слушатели событий */
+/* Eventlistener */
 root.addEventListener('input', checkField);
 formAddPlace.addEventListener('submit', validationFormAddPlace);
 formEdit.addEventListener('submit', validationFormEdit);
 formUpdateAvatar.addEventListener('submit', validationFormUpdateAvatar);
-
-/* Вызовы функций */
 addAttributeNovalidate();
 
 

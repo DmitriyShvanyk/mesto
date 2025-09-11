@@ -3,8 +3,7 @@ export { PopupImage };
 import {root} from "./../index.js";
 
 
-
-// Класс, для создания всплывающего окна с изображением
+// Class Popup Image
 class PopupImage {
   constructor(popupImageElement) {
     this.popupImageElement = popupImageElement;
@@ -52,7 +51,5 @@ class PopupImage {
         root.removeChild(target.closest('.popup'));
       }
     });
-
   }
-
 }

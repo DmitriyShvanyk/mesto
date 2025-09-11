@@ -1,6 +1,6 @@
 export { Popup };
 
-// Класс для всплывающего окна
+// Class Popup
 class Popup {
   constructor(popupElement, btnElement) {
     this.popupElement = popupElement;
@@ -16,17 +16,17 @@ class Popup {
     this.popupElement.querySelector('.popup__overlay').addEventListener('click', this.closePopup);
   }
 
-  // метод для открытия окна
+  // Open Popup
   openPopup() {
     this.popupElement.classList.add('popup_is-opened');
   }
 
-  // метод для закрытия окна
+  // Close Popup
   closePopup() {
     this.popupElement.classList.remove('popup_is-opened');
   }
 
-  // метод для удаления ошибок валидации при закрытии всплывающего окна
+  // Remove Error When Close Popup
   removeErrorWhenClosePopup(event) {
     const target = event.target;
     let message = target.closest('.popup').querySelectorAll('.popup__error--show');
@@ -36,7 +36,7 @@ class Popup {
     }
   }
 
-  // метод для очистки полей при закрытии всплывающего окна
+  // Reset Fields When Close Popup
   resetFieldsWhenClosePopup() {
     this.popupElement.querySelector('.popup__form').reset();
   }

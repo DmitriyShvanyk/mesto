@@ -1,7 +1,7 @@
 export { addAttributeNovalidate, hasError, showError, checkField };
 
 
-// Добавляем атрибут novalidate
+// Add Attribute Novalidate
 function addAttributeNovalidate() {
   const forms = document.querySelectorAll('.popup__form');
   for (let i = 0; i < forms.length; i++) {
@@ -11,7 +11,7 @@ function addAttributeNovalidate() {
 }
 
 
-// Функция наличия ошибок
+// Has Error
 function hasError(field) {
 
   if (field.disabled || field.type === 'submit') {
@@ -25,29 +25,29 @@ function hasError(field) {
   }
 
   if (validity.valueMissing) {
-    return 'Это обязательное поле';
+    return 'This field is required';
   }
 
   if (validity.typeMismatch) {
 
     // URL
     if (field.type === 'url') {
-      return 'Здесь должна быть ссылка';
+      return 'There should be a link here';
     }
 
   }
 
   if (validity.tooShort || validity.tooLong) {
-    return 'Должно быть от ' + field.getAttribute('minLength') + ' до ' + field.getAttribute('maxLength') + ' символов';
+    return 'Must be from ' + field.getAttribute('minLength') + '  to ' + field.getAttribute('maxLength') + ' characters';
   }
 
-  // Общая ошибка
-  return 'Это обязательное поле';
+  // General Error
+  return 'This field is required';
 
 }
 
 
-// Функция отображения ошибок валидации
+//  Show Error
 function showError(field, error) {
 
   let name = field.name;
@@ -69,7 +69,7 @@ function showError(field, error) {
 }
 
 
-// Функция удаления ошибок валидации
+// Remove Error
 function removeError(field) {
 
   let name = field.name;
@@ -87,7 +87,7 @@ function removeError(field) {
 }
 
 
-// Функция проверки поля
+// Check Field
 function checkField(event) {
 
   const target = event.target;
