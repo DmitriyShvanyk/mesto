@@ -14,18 +14,15 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: './js/[name].[chunkhash].js',
-    clean: true // очистка dist перед сборкой
+    filename: './js/[name].[chunkhash].js'
   },
   module: {
     rules: [
-      // JS
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: 'babel-loader'
       },
-      // CSS
       {
         test: /\.css$/,
         use: [
@@ -34,20 +31,22 @@ module.exports = {
           'postcss-loader'
         ]
       },
-      // Изображения (png, jpg, gif, ico, svg)
       {
-        test: /\.(png|jpe?g|gif|ico|svg)$/i,
-        type: 'asset/resource',
-        generator: {
-          filename: 'images/[name][ext]'
+        test: /\.(png|jpg|gif|ico|svg)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: './images/[name].[ext]'
+          }
         }
       },
-      // Шрифты
       {
         test: /\.(ttf|eot|woff|woff2)$/,
-        type: 'asset/resource',
-        generator: {
-          filename: 'vendor/fonts/[name][ext]'
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: './vendor/fonts/[name].[ext]'
+          }
         }
       }
     ]
@@ -85,12 +84,5 @@ module.exports = {
       }
     })
   ],
-  devtool: isDev ? 'source-map' : false,
-  devServer: {
-    static: path.resolve(__dirname, 'dist'),
-    compress: true,
-    port: 8080,
-    open: true,
-    hot: true
-  }
+  devtool: isDev ? 'source-map' : false
 };
